@@ -1,11 +1,32 @@
-const express = require('express');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import helmet from 'helmet';
+import hpp from 'hpp';
+import cors from 'cors';
+
+import { globalLimiter } from './middleware/rateLimiter.js';
+import routes from './routes/routes.js';
+import logger from './utils/logger.js';
+import sanitizeMiddleware from './middleware/sanitize.js';
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('Server is live!');
-});
+// 🔐 Security
+app.use(helmet());
+app.use(hpp());
+app.use(cors());
+app.use(sanitizeMiddleware);
+app.use(globalLimiter);
+
+// 🧠 Parse JSON
+app.use(express.json({ limit: '2mb' })); // make env variable or 2mb??
+
+// 📦 Routes
+app.use('/', routes);
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  logger.info(`Server running on http://localhost:${PORT}`);
 });

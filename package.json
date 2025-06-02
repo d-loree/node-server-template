@@ -1,0 +1,51 @@
+{
+  "name": "node-server-template",
+  "version": "1.0.0",
+  "description": "A fast, modular, and secure Node.js + Express server starter template",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint-staged": "lint-staged",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "docker": "docker-compose down && docker-compose build && docker-compose up"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "keywords": [],
+  "author": "Dylan Loree",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "6.8.2",
+    "bullmq": "5.53.1",
+    "cors": "2.8.5",
+    "dotenv": "16.5.0",
+    "express": "5.1.0",
+    "express-rate-limit": "7.5.0",
+    "helmet": "8.1.0",
+    "hpp": "0.2.3",
+    "ioredis": "5.6.1",
+    "pino": "9.7.0",
+    "retire": "5.2.6",
+    "xss": "1.0.15"
+  },
+  "devDependencies": {
+    "eslint": "9.28.0",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-plugin-import": "2.31.0",
+    "eslint-plugin-prettier": "5.4.1",
+    "husky": "9.1.7",
+    "jest": "29.7.0",
+    "lint-staged": "16.1.0",
+    "nodemon": "3.1.10",
+    "pino-pretty": "13.0.0",
+    "prisma": "6.8.2"
+  }
+}
