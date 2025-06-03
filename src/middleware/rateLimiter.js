@@ -18,6 +18,4 @@ const globalLimiter = rateLimit({
 //   legacyHeaders: false,
 // });
 
-module.exports = {
-  globalLimiter,
-};
+export { globalLimiter };

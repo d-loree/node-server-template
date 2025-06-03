@@ -52,6 +52,7 @@ PORT=3000
 ```
 provider = "postgresql" // or mysql, sqlite, mongodb, etc.
 ```
+some providers may need their node-specific driver. (npm install sqlite3, etc)
 
 - Run:
 ```
@@ -120,6 +121,9 @@ This section covers how to define and apply database changes using Prisma ORM an
 - `npx prisma studio` - Opens Prisma Studio — a visual UI for browsing and editing your database.
 
 More on prisma [here](https://www.prisma.io/)
+
+### Seeds
+
 
 ### Express Rate Limits
 Add rate limiting to your API to prevent abuse and brute-force attacks. By default there is a global rate limiter inside `./src/middleware/rateLimiter` applied to all requests.

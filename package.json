@@ -11,7 +11,8 @@
     "lint-staged": "lint-staged",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "docker": "docker-compose down && docker-compose build && docker-compose up"
+    "docker": "docker-compose down && docker-compose build && docker-compose up",
+    "seed": "node prisma/seed.js"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json}": [

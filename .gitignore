@@ -6,6 +6,4 @@ node_modules
 dist
 build
 
-/generated/prisma
-
 coverage

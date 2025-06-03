@@ -9,4 +9,4 @@ router.get('/', (req, res) => {
 // import authRoutes from './auth.js';
 // router.use('/auth', authRoutes);
 
-module.exports = router;
+export { router };

@@ -7,9 +7,9 @@ import hpp from 'hpp';
 import cors from 'cors';
 
 import { globalLimiter } from './middleware/rateLimiter.js';
-import routes from './routes/routes.js';
-import logger from './utils/logger.js';
-import sanitizeMiddleware from './middleware/sanitize.js';
+import { router } from './routes/routes.js';
+import { logger } from './utils/logger.js';
+import { sanitizeMiddleware } from './middleware/sanitize.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,7 +25,7 @@ app.use(globalLimiter);
 app.use(express.json({ limit: '2mb' })); // make env variable or 2mb??
 
 // 📦 Routes
-app.use('/', routes);
+app.use('/', router);
 
 app.listen(PORT, () => {
   logger.info(`Server running on http://localhost:${PORT}`);
