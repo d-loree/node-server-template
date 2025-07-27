@@ -22,7 +22,7 @@ app.use(sanitizeMiddleware);
 app.use(globalLimiter);
 
 // 🧠 Parse JSON
-app.use(express.json({ limit: '2mb' })); // make env variable or 2mb??
+app.use(express.json({ limit: process.env.JSON_LIMIT || '2mb' }));
 
 // 📦 Routes
 app.use('/', router);

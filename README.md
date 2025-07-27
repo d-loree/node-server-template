@@ -46,6 +46,7 @@ PORT=3000
 ```
 
 ### Database Setup
+- SELECT PROVIDER
 - Create your database (PostgreSQL, SQLite, etc.)
 - Add your DATABASE_URL to the `.env` file in the root
 - Open `prisma/schema.prisma` and set the correct provider:
@@ -123,7 +124,7 @@ This section covers how to define and apply database changes using Prisma ORM an
 More on prisma [here](https://www.prisma.io/)
 
 ### Seeds
-
+ how to setup/use seeds? create a seed command npm
 
 ### Express Rate Limits
 Add rate limiting to your API to prevent abuse and brute-force attacks. By default there is a global rate limiter inside `./src/middleware/rateLimiter` applied to all requests.
