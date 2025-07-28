@@ -68,6 +68,7 @@ provider = "postgresql" // or mysql, sqlite, mongodb, etc.
 npx prisma generate
 npx prisma db push
 ```
+- Show databse hookup with Postgres and others with prisma?
 
 ### CI/CD (Optional)
 - Default Lint and Test action is setup in .github/workflows/ci.yml. You can add this as a mandatory aciton while mergung with main
@@ -78,7 +79,7 @@ Consider setting up GitHub Actions for:
 - Enforcing lint/format rules
 
 ### Running Server
-🐳 Run With Docker
+🐳 Run With Docker-Compose (Redis included)
 ```
 npm run docker
 ```
@@ -92,6 +93,25 @@ Next, you can start building out your application.
 Check out the Using section for examples, testing, database migrations, and more tutorials to guide you further.
 
 ## Using (examples and building guides)
+
+### Scritps package,json
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint-staged": "lint-staged",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "docker": "docker-compose down && docker-compose build && docker-compose up",
+    "seed": "node prisma/seed.js"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx,json}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+
 
 ### Husky – Run Commands on Git Hooks
 Husky is a Node.js package that lets you run custom commands on Git actions like staging, committing, and more.
@@ -258,6 +278,10 @@ Code	Meaning	Use When...
 422	Unprocessable Entity	Valid input format but failed semantic
 500	Internal Server Error	Unexpected error in server
 
+## Production Setup
+- NGinx/certbot/ssl
+- Pm2 if needed?? idk. Docker?
+- building for prod and using
 
 ## Packages List
 
