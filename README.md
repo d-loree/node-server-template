@@ -249,7 +249,11 @@ Brevo Emailing Tempalte use:
 
 - Adding alert service to sendAlert:
 
+### Storage Handling
 
+- Storage options
+- Also add a how-to add new adapters/options
+- make a few default of popular options
 
 ### Error Handling
 

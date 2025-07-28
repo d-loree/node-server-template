@@ -1,5 +1,5 @@
-import { sendDiscordAlert } from './discord.js';
-import { logger } from '../../utils/logger.js';
+import { sendDiscordAlert } from './alerts/discord.js';
+import { logger } from '../utils/logger.js';
 
 export async function sendAlert(message, _options = {}) {
   const promises = [];
