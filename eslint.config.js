@@ -18,6 +18,7 @@ export default [
         __dirname: true,
         __filename: true,
         exports: true,
+        console: true,
       },
     },
     linterOptions: {
@@ -28,6 +29,7 @@ export default [
     },
     rules: {
       'prettier/prettier': 'error',
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
 ];
