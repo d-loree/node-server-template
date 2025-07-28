@@ -255,6 +255,47 @@ Brevo Emailing Tempalte use:
 - Also add a how-to add new adapters/options
 - make a few default of popular options
 
+✅ 6. Sample Upload Setup
+js
+Copy
+Edit
+// routes/fileRoutes.js
+import express from 'express';
+import multer from 'multer';
+import { storage } from '../services/storage/index.js';
+import { resizeImage } from '../services/storage/fileProcessor.js';
+
+const upload = multer({ storage: multer.memoryStorage() }); // store in memory before processing
+const router = express.Router();
+
+router.post('/upload', upload.single('file'), async (req, res) => {
+  try {
+    const resizedBuffer = await resizeImage(req.file.buffer, 1024);
+    const result = await storage.save({ ...req.file, buffer: resizedBuffer });
+
+    res.json({ success: true, ...result });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Upload failed' });
+  }
+});
+
+export default router;
+
+🔧 Example usage:
+If sending to client:
+js
+Copy
+Edit
+const stream = await localStorage.get('file.jpg');
+stream.pipe(res);
+If processing with Sharp:
+js
+Copy
+Edit
+const buffer = await localStorage.getBuffer('file.jpg');
+const resized = await resizeImage(buffer);
+
 ### Error Handling
 
 🔥 You can do this in any route:
