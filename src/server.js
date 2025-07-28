@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   next(err);
 });
 
-// ❌ Global Error Handler
+// ❌ Global Error Handler – Must be registered last
 app.use(errorHandler);
 
 app.listen(PORT, () => {
