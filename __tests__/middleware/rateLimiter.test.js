@@ -15,7 +15,6 @@ describe('Rate limiter', () => {
   });
 
   it('should block after 15 requests', async () => {
-    // 16th request should be blocked
     const res = await request(app).get('/');
     expect(res.statusCode).toBe(429);
     expect(res.text).toContain('Too many requests');
