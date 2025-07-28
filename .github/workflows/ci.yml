@@ -1,4 +1,4 @@
-name: Lint & Test
+name: Lint, Test & Security
 
 on:
   push:
@@ -44,3 +44,22 @@ jobs:
 
       - name: 🧪 Run Jest Tests
         run: npm test
+
+  security:
+    name: 🔒 Security Scan
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🔧 Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: 📊 Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3

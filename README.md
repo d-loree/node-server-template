@@ -135,6 +135,9 @@ Please see Jest documentation for building tests [here](https://jestjs.io/)
 ### Database migrations
 This section covers how to define and apply database changes using Prisma ORM and manage schema updates through migrations.
 
+FINISH THIS HERE. SHOW MIGRATIONS HERE ON HOW TO DO TI AND STUFF. ALSO SHOW ABOUT CHANIGNG PROVIDER, MIGRATIONS, ADDING TABLES, ETC ETC
+ALSO SHOW HOW TO USE PRISMA BREIFLY
+
 🔧 **Common Commands**:
 - `npx prisma init` - Initializes Prisma in your project and sets up the schema.prisma file - **This should already be done in the template**
 
@@ -197,6 +200,8 @@ const app = express();
 app.use('/api', exampleRoutes);
 
 ```
+
+STANDARD IS ADDING CONTROLLER. CONTROLLER IS THE INBOUND/OUTBOUND WRAPPER. IT CLALS THE SERVICES REQUIRED FOR LOGIC
 
 More info [here](https://expressjs.com/en/guide/routing.html)
 
