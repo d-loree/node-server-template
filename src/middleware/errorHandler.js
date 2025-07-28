@@ -3,18 +3,23 @@ import { logger } from '../utils/logger.js';
 export function errorHandler(err, req, res, _next) {
   const status = err.status || 500;
   const message = err.message || 'Something went wrong';
-  const stack = process.env.NODE_ENV === 'production' ? undefined : err.stack;
+  const isProd = process.env.NODE_ENV === 'production';
 
   logger.error(`[${req.method}] ${req.originalUrl} → ${message}`, {
     status,
-    ...(stack && { stack }),
+    ...(err.stack && { stack: err.stack }),
   });
 
-  res.status(status).json({
+  const response = {
     success: false,
     error: message,
-    ...(stack && { stack }),
-  });
+  };
 
-  // Future enhancement: send error to email, Slack, Sentry, etc.
+  if (!isProd && err.stack) {
+    response.stack = err.stack;
+  }
+
+  res.status(status).json(response);
+
+  // Future enhancement: send alert (email, Discord, Sentry, etc.)
 }
