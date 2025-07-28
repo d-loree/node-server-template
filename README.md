@@ -17,6 +17,9 @@ A fast, modular, and secure Node.js + Express server starter template.
 
 - 🧰 Fully customizable and production-ready
 
+## Index
+- Links to all sections and brief description
+
 ## Setup
 Follow this setup to get the template up and running
 
