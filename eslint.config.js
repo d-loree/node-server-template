@@ -54,7 +54,6 @@ export default [
             parserOptions: {
                 ecmaVersion: "latest",
                 sourceType: "module",
-                // No tsconfig project required -> faster, fewer config headaches
                 project: false,
             },
             globals: {
@@ -68,11 +67,8 @@ export default [
         rules: {
             "prettier/prettier": "error",
 
-            // Prefer TS-aware unused-vars rule, disable base one for TS files
             "no-unused-vars": "off",
             "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
-
-            // Keep the rule set minimal; you can add more later if you want
         },
     },
 

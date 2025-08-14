@@ -23,3 +23,5 @@ export function errorHandler(err, req, res, _next) {
 
     // TODO: Future enhancement: send alert (email, Discord, Sentry, etc.)
 }
+
+// TODO: VERIFY THIS WORKS AND SHIT AND ERROR HANDLING

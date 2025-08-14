@@ -1,5 +1,6 @@
 # Node Server Template
 
+Node,js Server template for production servers. Uses Node, JS (TS support), Redis, ETC WHATEVER ELSE HERE
 
 # TODO: ONCE the project base is compelte make youtube videos for it and link????????
 
