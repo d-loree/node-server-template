@@ -1,62 +1,75 @@
 {
-  "name": "node-server-template",
-  "version": "1.0.0",
-  "description": "A fast, modular, and secure Node.js + Express server starter template",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint-staged": "lint-staged",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "docker": "docker-compose down && docker-compose build && docker-compose up",
-    "seed": "node prisma/seed.js"
-  },
-  "lint-staged": {
-    "**/*.{js,ts,tsx,json}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
-  "prisma": {
-    "seed": "node prisma/seed.js"
-  },
-  "keywords": [],
-  "author": "Dylan Loree",
-  "license": "MIT",
-  "dependencies": {
-    "@prisma/client": "6.8.2",
-    "axios": "1.11.0",
-    "bullmq": "5.53.1",
-    "cors": "2.8.5",
-    "dotenv": "16.5.0",
-    "express": "5.1.0",
-    "express-rate-limit": "7.5.0",
-    "helmet": "8.1.0",
-    "hpp": "0.2.3",
-    "ioredis": "5.6.1",
-    "multer": "2.0.2",
-    "pino": "9.7.0",
-    "retire": "5.2.6",
-    "sharp": "0.34.3",
-    "xss": "1.0.15"
-  },
-  "devDependencies": {
-    "cross-env": "10.0.0",
-    "eslint": "9.28.0",
-    "eslint-config-prettier": "10.1.5",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-prettier": "5.4.1",
-    "globals": "16.3.0",
-    "husky": "9.1.7",
-    "jest": "30.0.5",
-    "lint-staged": "16.1.0",
-    "nodemon": "3.1.10",
-    "pino-pretty": "13.0.0",
-    "prettier": "3.6.2",
-    "prisma": "6.8.2",
-    "supertest": "7.1.4"
-  }
+    "name": "node-server-template",
+    "version": "1.0.0",
+    "description": "A fast, modular, and secure Node.js + Express server starter template",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/server.ts",
+        "build": "tsc -p tsconfig.json",
+        "start": "node dist/server.js",
+        "typecheck": "tsc --noEmit",
+        "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky install",
+        "docker": "docker-compose down && docker-compose build && docker-compose up",
+        "db:generate": "prisma generate",
+        "db:migrate": "prisma migrate dev",
+        "db:push": "prisma db push",
+        "db:seed": "tsx prisma/seed.ts",
+        "studio": "prisma studio"
+    },
+    "lint-staged": {
+        "**/*.{js,ts,tsx,json}": [
+            "eslint --fix",
+            "prettier --write"
+        ]
+    },
+    "prisma": {
+        "seed": "node prisma/seed.js"
+    },
+    "keywords": [],
+    "author": "Dylan Loree",
+    "license": "MIT",
+    "dependencies": {
+        "@prisma/client": "6.8.2",
+        "axios": "1.11.0",
+        "bullmq": "5.53.1",
+        "cors": "2.8.5",
+        "dotenv": "16.5.0",
+        "express": "5.1.0",
+        "express-rate-limit": "7.5.0",
+        "helmet": "8.1.0",
+        "hpp": "0.2.3",
+        "ioredis": "5.6.1",
+        "multer": "2.0.2",
+        "pino": "9.7.0",
+        "retire": "5.2.6",
+        "sharp": "0.34.3",
+        "xss": "1.0.15"
+    },
+    "devDependencies": {
+        "@types/cors": "2.8.19",
+        "@types/express": "5.0.3",
+        "@types/hpp": "0.2.6",
+        "@types/node": "24.2.1",
+        "cross-env": "10.0.0",
+        "eslint": "9.28.0",
+        "eslint-config-prettier": "10.1.5",
+        "eslint-plugin-import": "2.31.0",
+        "eslint-plugin-prettier": "5.4.1",
+        "globals": "16.3.0",
+        "husky": "9.1.7",
+        "jest": "30.0.5",
+        "lint-staged": "16.1.0",
+        "nodemon": "3.1.10",
+        "pino-pretty": "13.0.0",
+        "prettier": "3.6.2",
+        "prisma": "6.8.2",
+        "supertest": "7.1.4",
+        "tsx": "4.20.3",
+        "typescript": "5.9.2"
+    }
 }
