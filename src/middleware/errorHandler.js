@@ -21,5 +21,5 @@ export function errorHandler(err, req, res, _next) {
 
     res.status(status).json(response);
 
-    // Future enhancement: send alert (email, Discord, Sentry, etc.)
+    // TODO: Future enhancement: send alert (email, Discord, Sentry, etc.)
 }

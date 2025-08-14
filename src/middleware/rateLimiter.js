@@ -9,7 +9,7 @@ const globalLimiter = rateLimit({
     legacyHeaders: false,
 });
 
-// Specific Example:
+// Specific Example: TODO: MOVE TO README
 // const loginLimiter = rateLimit({
 //   windowMs: 5 * 60 * 1000, // 5 mins
 //   max: 5, // only 5 login attempts allowed

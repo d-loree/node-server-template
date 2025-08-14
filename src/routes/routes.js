@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
     res.send("Server is live!");
 });
 
-// Example new route file
+// Example new route file TODO: MOVE TO README
 // import authRoutes from './auth.js';
 // router.use('/auth', authRoutes);
 
