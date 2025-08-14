@@ -1,25 +1,25 @@
-import { logger } from '../utils/logger.js';
+import { logger } from "../utils/logger.js";
 
 export function errorHandler(err, req, res, _next) {
-  const status = err.status || 500;
-  const message = err.message || 'Something went wrong';
-  const isProd = process.env.NODE_ENV === 'production';
+    const status = err.status || 500;
+    const message = err.message || "Something went wrong";
+    const isProd = process.env.NODE_ENV === "production";
 
-  logger.error(`[${req.method}] ${req.originalUrl} → ${message}`, {
-    status,
-    ...(err.stack && { stack: err.stack }),
-  });
+    logger.error(`[${req.method}] ${req.originalUrl} → ${message}`, {
+        status,
+        ...(err.stack && { stack: err.stack }),
+    });
 
-  const response = {
-    success: false,
-    error: message,
-  };
+    const response = {
+        success: false,
+        error: message,
+    };
 
-  if (!isProd && err.stack) {
-    response.stack = err.stack;
-  }
+    if (!isProd && err.stack) {
+        response.stack = err.stack;
+    }
 
-  res.status(status).json(response);
+    res.status(status).json(response);
 
-  // Future enhancement: send alert (email, Discord, Sentry, etc.)
+    // Future enhancement: send alert (email, Discord, Sentry, etc.)
 }

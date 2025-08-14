@@ -1,10 +1,10 @@
-import { sendDiscordAlert } from './discord.js';
-import { logger } from '../../utils/logger.js';
+import { sendDiscordAlert } from "./discord.js";
+import { logger } from "../../utils/logger.js";
 
 export async function sendAlert(message, _options = {}) {
     const promises = [];
 
-    if (process.env.ALERT_DISCORD === 'true') {
+    if (process.env.ALERT_DISCORD === "true") {
         promises.push(sendDiscordAlert(message));
     }
 
@@ -20,6 +20,6 @@ export async function sendAlert(message, _options = {}) {
     try {
         await Promise.all(promises);
     } catch (err) {
-        logger.error('Alert failed:', { error: err.message, stack: err.stack });
+        logger.error("Alert failed:", { error: err.message, stack: err.stack });
     }
 }

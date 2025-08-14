@@ -1,9 +1,9 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 // TODO: FINISH THIS HERE AND MAKE IN README AND TEST
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp-relay.brevo.com',
+    host: "smtp-relay.brevo.com",
     port: 587,
     auth: {
         user: process.env.EMAIL_USER,
@@ -17,7 +17,7 @@ export async function sendEmailAlert(message) {
     await transporter.sendMail({
         from: `"Alert System" <${process.env.EMAIL_USER}>`,
         to: process.env.ALERT_EMAIL_TO,
-        subject: '🔥 Server Alert',
+        subject: "🔥 Server Alert",
         text: message,
     });
 }

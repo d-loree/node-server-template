@@ -1,12 +1,12 @@
-import rateLimit from 'express-rate-limit';
+import rateLimit from "express-rate-limit";
 
 // 🌐 Global limiter (applied to all requests)
 const globalLimiter = rateLimit({
-  windowMs: 1 * 60 * 1000, // 1 mins
-  max: 15,
-  message: 'Too many requests, please try again later.',
-  standardHeaders: true,
-  legacyHeaders: false,
+    windowMs: 1 * 60 * 1000, // 1 mins
+    max: 15,
+    message: "Too many requests, please try again later.",
+    standardHeaders: true,
+    legacyHeaders: false,
 });
 
 // Specific Example:

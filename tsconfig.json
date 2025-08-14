@@ -1,35 +1,28 @@
 {
     "compilerOptions": {
-        "target": "ES2022", // Output JavaScript will follow ES2022 features TODO: Make sure tehse comments are good
-        "module": "NodeNext", // Use Node.js's native ES module resolution
-        "moduleResolution": "NodeNext", // Resolve imports like Node.js ESM does
-        "outDir": "dist", // Where compiled JavaScript files go
-        "rootDir": "src", // Where your TypeScript source files live
+        // JS + type-checking
+        "checkJs": true, // enable TS checking in .js files
+        "allowJs": true, // parse .js files
+        "skipLibCheck": true,
 
-        // --- Strictness & safety ---
-        "strict": true, // Turn on all strict type-checking rules
-        "noImplicitOverride": true, // Require `override` keyword when overriding a method
-        "noUncheckedIndexedAccess": true, // Add `undefined` to types when indexing (safer)
-        "exactOptionalPropertyTypes": true, // Optional properties must match type exactly (no `undefined` unless declared)
+        // Node ESM
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
 
-        // --- Module / interop ---
-        "esModuleInterop": true, // Allow `import defaultExport from "module"` for CommonJS modules
-        "forceConsistentCasingInFileNames": true, // File imports must match actual casing
-        "skipLibCheck": true, // Skip type checking in `node_modules` (faster builds)
-        "verbatimModuleSyntax": true, // Preserve import/export syntax exactly (important for ESM)
-        "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export (synthetic)
+        // Interop that avoids “not callable” issues
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "verbatimModuleSyntax": false,
 
-        // --- Aliases ---
-        "baseUrl": ".", // Base directory for non-relative imports
-        "paths": {
-            "@/*": ["src/*"]
-        },
+        // Paths / DX
+        "baseUrl": ".",
+        "paths": { "@/*": ["src/*"] },
+        "resolveJsonModule": true,
 
-        // --- Extras ---
-        "resolveJsonModule": true, // Allow importing `.json` files as modules
-        "types": ["node"] // Include Node.js type declarations globally
+        // Emission (only if you later add .ts files)
+        "rootDir": "src",
+        "outDir": "dist"
     },
-
-    // Include your source code
     "include": ["src"]
 }

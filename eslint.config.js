@@ -1,17 +1,28 @@
-import js from '@eslint/js';
-import prettier from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
-import globals from 'globals';
+import js from "@eslint/js";
+import prettier from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
+import globals from "globals";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 export default [
+    // Base JS recommendations
     js.configs.recommended,
+
+    // Disable rules that conflict with Prettier
     prettier,
+
+    // Global ignores
     {
-        ignores: ['node_modules', 'dist', 'build'],
-        files: ['**/*.js', '**/*.ts'],
+        ignores: ["node_modules/**", "dist/**", "build/**"],
+    },
+
+    // ----- JavaScript files -----
+    {
+        files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
         languageOptions: {
-            ecmaVersion: 2021,
-            sourceType: 'module',
+            ecmaVersion: "latest",
+            sourceType: "module",
             globals: {
                 ...globals.node,
                 require: true,
@@ -30,12 +41,44 @@ export default [
             prettier: prettierPlugin,
         },
         rules: {
-            'prettier/prettier': 'error',
-            'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+            "prettier/prettier": "error",
+            "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
         },
     },
+
+    // ----- TypeScript files -----
     {
-        files: ['**/__tests__/**/*.test.js'],
+        files: ["**/*.ts", "**/*.tsx"],
+        languageOptions: {
+            parser: tsParser,
+            parserOptions: {
+                ecmaVersion: "latest",
+                sourceType: "module",
+                // No tsconfig project required -> faster, fewer config headaches
+                project: false,
+            },
+            globals: {
+                ...globals.node,
+            },
+        },
+        plugins: {
+            "@typescript-eslint": tsPlugin,
+            prettier: prettierPlugin,
+        },
+        rules: {
+            "prettier/prettier": "error",
+
+            // Prefer TS-aware unused-vars rule, disable base one for TS files
+            "no-unused-vars": "off",
+            "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+
+            // Keep the rule set minimal; you can add more later if you want
+        },
+    },
+
+    // ----- Test files (JS/TS) -----
+    {
+        files: ["**/__tests__/**/*.test.js", "**/__tests__/**/*.test.ts"],
         languageOptions: {
             globals: {
                 ...globals.jest,

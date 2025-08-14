@@ -1,8 +1,8 @@
-import { asyncHandler } from '../../src/utils/asyncHandler.js';
-import { jest } from '@jest/globals';
+import { asyncHandler } from "../../src/utils/asyncHandler.js";
+import { jest } from "@jest/globals";
 
-describe('asyncHandler', () => {
-    it('should call the wrapped function', async () => {
+describe("asyncHandler", () => {
+    it("should call the wrapped function", async () => {
         const req = {};
         const res = {};
         const next = jest.fn();
@@ -14,10 +14,10 @@ describe('asyncHandler', () => {
         expect(next).not.toHaveBeenCalled();
     });
 
-    it('should catch errors and call next with the error', async () => {
+    it("should catch errors and call next with the error", async () => {
         const req = {};
         const res = {};
-        const error = new Error('Test error');
+        const error = new Error("Test error");
         const next = jest.fn();
         const handler = jest.fn().mockRejectedValue(error);
 

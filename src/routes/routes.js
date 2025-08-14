@@ -1,9 +1,9 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
 
 // Route Example
-router.get('/', (req, res) => {
-  res.send('Server is live!');
+router.get("/", (req, res) => {
+    res.send("Server is live!");
 });
 
 // Example new route file
